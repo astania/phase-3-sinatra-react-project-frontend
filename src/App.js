@@ -23,7 +23,7 @@
 // import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
 
 
-import { Router, Route, Outlet, Link } from 'react-router-dom'
+import { Outlet, Link } from 'react-router-dom'
 // 
 import {useState, useEffect} from "react"
 import Home from './components/logins/Home'
@@ -36,6 +36,8 @@ const App = () => {
 
   const [restaurantsLoading, setRestaurantsLoading] = useState(true)
   const [guestsLoading, setGuestsLoading] = useState(true)
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   
   useEffect(() => {
     fetch("http://localhost:9292/restaurants")
@@ -55,31 +57,48 @@ const App = () => {
   
   console.log(guests)
 
-  return (
-    <div>
+  if(!isLoggedIn) {
+    return (
+      <div>
       <h1>Reserv'd</h1>
       <h5><em>Reserve with confidence!</em></h5>
+      
       <nav>
         <Link to="/home">Home</Link> | {" "}
         <Link to="/about">About</Link>
       </nav>
       <Outlet />
-
-     
     </div>
-  );
+    )
+    } else {
+  return (
+    <div>
+      <h1>Reserv'd</h1>
+      <h5><em>Reserve with confidence!</em></h5>
+      
+      <nav>
+        <Link to="/home">Home</Link> | {" "}
+        <Link to="/about">About</Link> | {" "}
+        <Link to="/restaurants">Restaurants</Link> | {" "}
+        <Link to="/reservations">My Reservations</Link> | {" "}
+        <Link to="/profile">My Profile</Link>
+      </nav>
+      <Outlet />
+    </div>
+  )
+}
 }
 
 export default App;
 
-/* <Button className={classes.button} variant="contained">Hey!</Button> */
+/* /* <Button className={classes.button} variant="contained">Hey!</Button> */
 
- {/* <Router>
+ /* <Router>
 
-        <Header slogan="Never wait for a table again!" storeName="Reservation World" /> */}
+        <Header slogan="Never wait for a table again!" storeName="Reservation World" /> */
 
 
-          {/* <Route path="/guests/new">
+          /* <Route path="/guests/new">
             <GuestForm />
           </Route>
 
@@ -137,4 +156,4 @@ export default App;
             {"404 Not Found"}
           </Route>
       </Router>
-      <Footer /> */}
+      <Footer /> */
