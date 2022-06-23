@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Home from './components/logins/Home'
+import About from './components/logins/About'
 import RestaurantList from './components/restaurantInfo/RestaurantsList'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -19,6 +20,8 @@ root.render(
             </main>
           }/>
           <Route path="home" element={<Home />}/>
+          <Route path="about" element={<About />}/>
+          <Route path="restaurants" element={<RestaurantList />}/>
       </Route>
     </Routes>
   </BrowserRouter>
