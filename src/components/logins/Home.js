@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import {Outlet} from 'react-router-dom'
 // import {useHistory} from 'react-router-dom'
 
 const Home = ({ guests, loggedInGuest, setLoggedInGuest, setGuestLoggedIn }) => {
 
-    const guestOptions = guests.map(guest => {
-        return { label: guest.name, value: guest.id }
-    })
+    // const guestOptions = guests.map(guest => {
+    //     return { label: guest.name, value: guest.id }
+    // })
 
     const [currentGuestId, setCurrentGuestId] = useState("")
     // const history = useHistory()
@@ -31,19 +32,19 @@ const Home = ({ guests, loggedInGuest, setLoggedInGuest, setGuestLoggedIn }) => 
 
         <div>
             {/* <div><img src={window.location.origin + "/Images/homePageBackground.jpg"} alt="A fancy restaurant interior"></img></div> */}
-            <h1>Welcome to Reservd!</h1>
-            <p>Book your restaurant reservations with confidence!</p>
             <h2><em>Log in below</em></h2>
             <form onSubmit={e => handleSubmit(e)}>
             <label>
                 Select your name
                 <select onChange={e => handleChange(e)}>
-                    {guestOptions.map(option => (
-                        <option value={option.value} key={option.value}>{option.label}</option>))}
+                    {/* {guestOptions.map(option => (
+                        <option value={option.value} key={option.value}>{option.label}</option>))} */}
                 </select>
             </label>
             <button type="submit">login</button>
         </form>
+
+        <Outlet />
         </div >
     )
 }

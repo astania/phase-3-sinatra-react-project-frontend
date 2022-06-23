@@ -5,25 +5,28 @@
 //     backgroundColor: 'red'
 //   }
 // })
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Home from './components/logins/Home'
-import Footer from './components/navigation/Footer'
-import Header from './components/navigation/Header'
-import NavBar from './components/navigation/NavBar'
-import GuestForm from './components/guestInfo/GuestForm'
-import GuestCard from './components/guestInfo/GuestCard'
-import GuestProfile from './components/guestInfo/GuestProfile'
-import GuestLogInPage from './components/guestInfo/GuestLogInPage'
-import ReservationForm from './components/reservationInfo/ReservationForm'
-import ReservationCard from './components/reservationInfo/ReservationCard'
-import ReservationList from './components/reservationInfo/ReservationList'
-import RestaurantList from './components/restaurantInfo/RestaurantsList'
-import RestaurantForm from './components/restaurantInfo/RestaurantForm'
-import RestaurantCard from './components/restaurantInfo/RestaurantCard'
-import RestaurantProfile from './components/restaurantInfo/RestaurantProfile'
-import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
-import {useState, useEffect} from "react"
 
+// import Footer from './components/navigation/Footer'
+// import Header from './components/navigation/Header'
+// import NavBar from './components/navigation/NavBar'
+// import GuestForm from './components/guestInfo/GuestForm'
+// import GuestCard from './components/guestInfo/GuestCard'
+// import GuestProfile from './components/guestInfo/GuestProfile'
+// import GuestLogInPage from './components/guestInfo/GuestLogInPage'
+// import ReservationForm from './components/reservationInfo/ReservationForm'
+// import ReservationCard from './components/reservationInfo/ReservationCard'
+// import ReservationList from './components/reservationInfo/ReservationList'
+// import RestaurantList from './components/restaurantInfo/RestaurantsList'
+// import RestaurantForm from './components/restaurantInfo/RestaurantForm'
+// import RestaurantCard from './components/restaurantInfo/RestaurantCard'
+// import RestaurantProfile from './components/restaurantInfo/RestaurantProfile'
+// import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
+
+
+import { Router, Route, Outlet, Link } from 'react-router-dom'
+// 
+import {useState, useEffect} from "react"
+import Home from './components/logins/Home'
 
 const App = () => {
   // const classes = useStyles()
@@ -35,8 +38,6 @@ const App = () => {
   const [guestsLoading, setGuestsLoading] = useState(true)
   
   useEffect(() => {
-    
-
     fetch("http://localhost:9292/restaurants")
       .then(r => r.json())
       .then(fetchedRestaurants => setRestaurants(fetchedRestaurants))
@@ -44,23 +45,41 @@ const App = () => {
   }, [])
 
   useEffect(()=>{
-    fetch("http://localhost:9292/restaurants")
+    fetch("http://localhost:9292/guests")
       .then(r => r.json())
       .then(fetchedGuests => setGuests(fetchedGuests))
       .then(setGuestsLoading(false))
-  })
+  }, [])
 
   // if(loading) return (<h1>Loading...</h1>)
   
+  console.log(guests)
+
   return (
     <div>
+      <h1>Reserv'd</h1>
+      <h5><em>Reserve with confidence!</em></h5>
+      <nav>
+        <Link to="/home">Home</Link> | {" "}
+        <Link to="/about">About</Link>
+      </nav>
+      <Outlet />
 
-      <Router>
+     
+    </div>
+  );
+}
 
-        <Header slogan="Never wait for a table again!" storeName="Reservation World" />
+export default App;
+
+/* <Button className={classes.button} variant="contained">Hey!</Button> */
+
+ {/* <Router>
+
+        <Header slogan="Never wait for a table again!" storeName="Reservation World" /> */}
 
 
-          <Route path="/guests/new">
+          {/* <Route path="/guests/new">
             <GuestForm />
           </Route>
 
@@ -117,24 +136,5 @@ const App = () => {
           <Route path="*">
             {"404 Not Found"}
           </Route>
-
-
-      
-
-
-
-
-
-
-
-
-
       </Router>
-      <Footer />
-    </div>
-  );
-}
-
-export default App;
-
-/* <Button className={classes.button} variant="contained">Hey!</Button> */
+      <Footer /> */}
