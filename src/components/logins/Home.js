@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
+import DefaultNavbar from '../navigation/DefaultNavBar'
 import GuestNavBar from '../navigation/GuestNavBar'
 import Header from '../navigation/Header'
+
 
 
 const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGuestId, loggedInGuest, setLoggedInGuest }) => {
@@ -49,7 +51,7 @@ const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGue
 
         <div>
             <Header />
-            <GuestNavBar />
+            {isLoggedIn ? <GuestNavBar /> : <DefaultNavbar />}
             {/* <div><img src={window.location.origin + "/Images/homePageBackground.jpg"} alt="A fancy restaurant interior"></img></div> */}
             <h2><em>Log in below</em></h2>
             <form onSubmit={e => handleSubmit(e)}>
