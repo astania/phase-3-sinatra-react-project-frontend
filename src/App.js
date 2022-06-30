@@ -39,6 +39,8 @@ const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
+
+
   // if(loading) return (<h1>Loading...</h1>)
 
 
@@ -56,7 +58,7 @@ const App = () => {
         } />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} />} />
-        <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} />} />
+        <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} />} />
       </Routes>
     </BrowserRouter>
