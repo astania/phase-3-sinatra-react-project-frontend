@@ -6,10 +6,13 @@ import { useState, useEffect } from "react"
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import GuestProfile from './components/guestInfo/GuestProfile';
 import ReservationList from './components/reservationInfo/ReservationList';
+import GuestNavBar from './components/navigation/GuestNavBar'
+import DefaultNavbar from './components/navigation/DefaultNavBar';
+import Header from './components/navigation/Header'
 
 
 const App = () => {
-  
+
   const [restaurants, setRestaurants] = useState([])
   const [guests, setGuests] = useState([])
 
@@ -40,19 +43,21 @@ const App = () => {
 
 
   return (
+    
     <BrowserRouter>
+    <Header />
+    {isLoggedIn ? <GuestNavBar /> : <DefaultNavbar />}
       <Routes>
-        <Route exact path="/" element={<Home guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>}>
-          <Route path="*" element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-          } />
-          <Route exact path="about" element={<About />} />
-          <Route exact path="restaurants" element={<RestaurantList restaurants={restaurants}/>} />
-          <Route exact path="profile" element={<GuestProfile loggedInGuest={loggedInGuest}/>}/>
-          <Route exact path="reservations" element={<ReservationList loggedInGuest={loggedInGuest}/>} />
-        </Route>
+        <Route exact path="/" element={<Home guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} />} />
+        <Route path="/*" element={
+          <main style={{ padding: "1rem" }}>
+            <p>There's nothing here!</p>
+          </main>
+        } />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} />} />
+        <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} />} />
+        <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} />} />
       </Routes>
     </BrowserRouter>
   )
