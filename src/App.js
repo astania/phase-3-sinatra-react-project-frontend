@@ -53,6 +53,9 @@ const App = () => {
   const [restaurantsLoading, setRestaurantsLoading] = useState(true)
   const [guestsLoading, setGuestsLoading] = useState(true)
 
+  const [currentGuestId, setCurrentGuestId] = useState("")
+  const [loggedInGuest, setLoggedInGuest] = useState({})
+
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   console.log("guests: ", guests)
@@ -68,7 +71,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home guests={guests} />}>
+        <Route exact path="/" element={<Home guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>}>
           {/* <Route exact index element={<Home />} /> */}
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>

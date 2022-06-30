@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import GuestNavBar from '../navigation/GuestNavBar'
+import Header from '../navigation/Header'
 
 
-const Home = ({ guests }) => {
+const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGuestId, loggedInGuest, setLoggedInGuest }) => {
 
 
     const guestOptions = guests.map(guest => {
         return { label: guest.name, value: guest.id }
     })
-
 
     //alphabetize guestOptions for dropdown menu
     function compare(a, b) {
@@ -23,12 +23,10 @@ const Home = ({ guests }) => {
     }
     guestOptions.sort(compare);
 
-
-
     // console.log("HOME component", guests)
 
-    const [currentGuestId, setCurrentGuestId] = useState("")
-    const [loggedInGuest, setLoggedInGuest] = useState({})
+    // const [currentGuestId, setCurrentGuestId] = useState("")
+    // const [loggedInGuest, setLoggedInGuest] = useState({})
 
 
     const handleChange = (event) => {
@@ -43,13 +41,14 @@ const Home = ({ guests }) => {
         console.log(guest)
         setLoggedInGuest(guest)
         console.log(loggedInGuest)
-        // setIsLoggedIn(true)
-        // console.log(isLoggedIn)
+        setIsLoggedIn(true)
+        console.log("LoggedIn = ", isLoggedIn)
     }
 
     return (
 
         <div>
+            <Header />
             <GuestNavBar />
             {/* <div><img src={window.location.origin + "/Images/homePageBackground.jpg"} alt="A fancy restaurant interior"></img></div> */}
             <h2><em>Log in below</em></h2>

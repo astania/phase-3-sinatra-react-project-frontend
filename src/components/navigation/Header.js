@@ -1,8 +1,8 @@
 const Header = ({slogan, storeName}) => {
   return (
     <div>
-        <h1>{storeName}</h1>
-        <h5>{slogan}</h5>
+        <h1>Reserv'd</h1>
+        <h5>Reserve with confidence</h5>
     </div>
   )
 }
