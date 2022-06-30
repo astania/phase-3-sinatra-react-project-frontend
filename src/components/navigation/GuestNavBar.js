@@ -10,7 +10,6 @@ const style = {
     verticalAlign: "center"
 }
 const activeStyle = {
-    textDecoration: "underline",
     width: "60%",
     margin: "5% 0 1%",
     padding: "1em",
@@ -18,7 +17,8 @@ const activeStyle = {
     color: "black",
     // backgroundColor: "rgb(2555, 120, 44)",
     fontWeight: "bold",
-    verticalAlign: "center"
+    verticalAlign: "center",
+    textDecoration: "underline",
   };
 
 const Navbar = () => {

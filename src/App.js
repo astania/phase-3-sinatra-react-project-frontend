@@ -58,8 +58,8 @@ const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  console.log("guests: ", guests)
-  console.log("Restaurants: ", restaurants)
+  // console.log("guests: ", guests)
+  // console.log("Restaurants: ", restaurants)
 
 
 
