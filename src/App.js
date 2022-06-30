@@ -16,29 +16,25 @@
 // import ReservationForm from './components/reservationInfo/ReservationForm'
 // import ReservationCard from './components/reservationInfo/ReservationCard'
 // import ReservationList from './components/reservationInfo/ReservationList'
-// import RestaurantList from './components/restaurantInfo/RestaurantsList'
+import RestaurantList from './components/restaurantInfo/RestaurantsList'
 // import RestaurantForm from './components/restaurantInfo/RestaurantForm'
 // import RestaurantCard from './components/restaurantInfo/RestaurantCard'
 // import RestaurantProfile from './components/restaurantInfo/RestaurantProfile'
 // import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
-
-
-import { Outlet, Link } from 'react-router-dom'
+import Home from './components/logins/Home';
+import About from './components/logins/About';
 // 
-import {useState, useEffect} from "react"
-import Home from './components/logins/Home'
+import { useState, useEffect } from "react"
+import { Outlet, Link, Routes, Route, BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   // const classes = useStyles()
 
+
+
   const [restaurants, setRestaurants] = useState([])
   const [guests, setGuests] = useState([])
 
-  const [restaurantsLoading, setRestaurantsLoading] = useState(true)
-  const [guestsLoading, setGuestsLoading] = useState(true)
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
-  
   useEffect(() => {
     fetch("http://localhost:9292/restaurants")
       .then(r => r.json())
@@ -46,114 +42,138 @@ const App = () => {
       .then(setRestaurantsLoading(false))
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:9292/guests")
       .then(r => r.json())
       .then(fetchedGuests => setGuests(fetchedGuests))
+
       .then(setGuestsLoading(false))
   }, [])
 
-  // if(loading) return (<h1>Loading...</h1>)
-  
-  console.log(guests)
+  const [restaurantsLoading, setRestaurantsLoading] = useState(true)
+  const [guestsLoading, setGuestsLoading] = useState(true)
 
-  if(!isLoggedIn) {
-    return (
-      <div>
-      <h1>Reserv'd</h1>
-      <h5><em>Reserve with confidence!</em></h5>
-      
-      <nav>
-        <Link to="/home">Home</Link> | {" "}
-        <Link to="/about">About</Link>
-      </nav>
-      <Outlet />
-    </div>
-    )
-    } else {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  console.log("guests: ", guests)
+  console.log("Restaurants: ", restaurants)
+
+
+
+  // if(loading) return (<h1>Loading...</h1>)
+
+  // console.log("in app.js", restaurants)
+  // console.log("in app.js", guests)
+
   return (
-    <div>
-      <h1>Reserv'd</h1>
-      <h5><em>Reserve with confidence!</em></h5>
-      
-      <nav>
-        <Link to="/home">Home</Link> | {" "}
-        <Link to="/about">About</Link> | {" "}
-        <Link to="/restaurants">Restaurants</Link> | {" "}
-        <Link to="/reservations">My Reservations</Link> | {" "}
-        <Link to="/profile">My Profile</Link>
-      </nav>
-      <Outlet />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home guests={guests} />}>
+          {/* <Route exact index element={<Home />} /> */}
+          <Route path="*" element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          } />
+          <Route path="home" element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="restaurants" element={<RestaurantList />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
-}
+
+
+
 }
 
 export default App;
 
+
+
+
+
+
+
+
+
+{/* <Routes>
+      <Route exact path="/" element={<App />}>
+        <Route exact index element={<Home />} />
+        <Route path="*" element={
+            <main style={{ padding: "1rem" }}>
+              <p>There's nothing here!</p>
+            </main>
+          }/>
+          <Route path="home" element={<Home />}/>
+          <Route path="about" element={<About />}/>
+          <Route path="restaurants" element={<RestaurantList />}/>
+      </Route>
+    </Routes>  */}
+
 /* /* <Button className={classes.button} variant="contained">Hey!</Button> */
 
- /* <Router>
+/* <Router>
 
-        <Header slogan="Never wait for a table again!" storeName="Reservation World" /> */
+       <Header slogan="Never wait for a table again!" storeName="Reservation World" /> */
 
 
-          /* <Route path="/guests/new">
-            <GuestForm />
-          </Route>
+/* <Route path="/guests/new">
+  <GuestForm />
+</Route>
 
-          <Route path="/restaurants/new">
-            <RestaurantForm />
-          </Route>
+<Route path="/restaurants/new">
+  <RestaurantForm />
+</Route>
 
-          <Route path="/restaurants/:id">
-            <RestaurantCard />
-          </Route>
+<Route path="/restaurants/:id">
+  <RestaurantCard />
+</Route>
 
-          <Route path="/restaurants/profile">
-            <RestaurantProfile />
-          </Route>
+<Route path="/restaurants/profile">
+  <RestaurantProfile />
+</Route>
 
-          <Route path="/reservations/new">
-            <ReservationForm />
-          </Route>
+<Route path="/reservations/new">
+  <ReservationForm />
+</Route>
 
-          <Route path="/reservations/:id">
-            <ReservationCard />
-          </Route>
+<Route path="/reservations/:id">
+  <ReservationCard />
+</Route>
 
-          <Route path="/guests/:id">
-            <GuestCard />
-          </Route>
+<Route path="/guests/:id">
+  <GuestCard />
+</Route>
 
-          <Route path="/guests/reservations">
-            <ReservationList />
-          </Route>
+<Route path="/guests/reservations">
+  <ReservationList />
+</Route>
 
-          <Route path="/guests/profile">
-            <GuestProfile />
-          </Route>
+<Route path="/guests/profile">
+  <GuestProfile />
+</Route>
 
-          <Route path="/guests/restaurants">
-            <RestaurantList />
-          </Route>
+<Route path="/guests/restaurants">
+  <RestaurantList />
+</Route>
 
-          <Route exact path="/guests">
-            <GuestLogInPage />
-          </Route>
+<Route exact path="/guests">
+  <GuestLogInPage />
+</Route>
 
-          <Route exact path="/restaurants">
-            <RestaurantLogInPage />
+<Route exact path="/restaurants">
+  <RestaurantLogInPage />
 
-          </Route>
+</Route>
 
-          <Route exact path="/">
-            <NavBar />
-            <Home />
-          </Route>
+<Route exact path="/">
+  <NavBar />
+  <Home />
+</Route>
 
-          <Route path="*">
-            {"404 Not Found"}
-          </Route>
-      </Router>
-      <Footer /> */
+<Route path="*">
+  {"404 Not Found"}
+</Route>
+</Router>
+<Footer /> */
