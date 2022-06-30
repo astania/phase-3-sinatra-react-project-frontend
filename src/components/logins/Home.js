@@ -10,9 +10,7 @@ const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGue
     return (
 
         <div>
-            
             {!!isLoggedIn ? <LoggedInHome loggedInGuest={loggedInGuest}/> : <LogInScreen guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>}
-        
             <Outlet />
             <Footer />
         </div >
