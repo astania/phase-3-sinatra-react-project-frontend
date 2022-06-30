@@ -78,9 +78,9 @@ const App = () => {
               <p>There's nothing here!</p>
             </main>
           } />
-          <Route path="home" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="restaurants" element={<RestaurantList />} />
+          <Route exact path="home" element={<Home />} />
+          <Route exact path="about" element={<About />} />
+          <Route exact path="restaurants" element={<RestaurantList />} />
         </Route>
       </Routes>
     </BrowserRouter>

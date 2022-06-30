@@ -6,7 +6,6 @@ const style = {
     padding: "1em",
     textDecoration: "none",
     color: "black",
-    // backgroundColor: "rgb(2555, 120, 44)",
     verticalAlign: "center"
 }
 const activeStyle = {
@@ -15,7 +14,6 @@ const activeStyle = {
     padding: "1em",
     textDecoration: "none",
     color: "black",
-    // backgroundColor: "rgb(2555, 120, 44)",
     fontWeight: "bold",
     verticalAlign: "center",
     textDecoration: "underline",
@@ -28,25 +26,25 @@ const Navbar = () => {
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }  
-                to="/"
+               exact to="/"
             >Home</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                to="/guests/restaurants"
+                exact to="/restaurants"
             >Restaurants</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                to="/guests/reservations"
+                exact to="/reservations"
             >My Reservations</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                to="/guests/profile"
+                exact to="/profile"
             >Profile</NavLink>
         </div>
     )
