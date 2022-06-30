@@ -2,7 +2,6 @@ import RestaurantCard from './RestaurantCard'
 
 
 const RestaurantsList = ({restaurants}) => {
-  console.log(restaurants)
 
 
   return (

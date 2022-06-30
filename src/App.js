@@ -1,38 +1,15 @@
-// import { Button, makeStyles } from '@material-ui/core'
 
-// const useStyles = makeStyles({
-//   button: {
-//     backgroundColor: 'red'
-//   }
-// })
-
-// import Footer from './components/navigation/Footer'
-// import Header from './components/navigation/Header'
-// import NavBar from './components/navigation/NavBar'
-// import GuestForm from './components/guestInfo/GuestForm'
-// import GuestCard from './components/guestInfo/GuestCard'
-// import GuestProfile from './components/guestInfo/GuestProfile'
-// import GuestLogInPage from './components/guestInfo/GuestLogInPage'
-// import ReservationForm from './components/reservationInfo/ReservationForm'
-// import ReservationCard from './components/reservationInfo/ReservationCard'
-// import ReservationList from './components/reservationInfo/ReservationList'
 import RestaurantList from './components/restaurantInfo/RestaurantsList'
-// import RestaurantForm from './components/restaurantInfo/RestaurantForm'
-// import RestaurantCard from './components/restaurantInfo/RestaurantCard'
-// import RestaurantProfile from './components/restaurantInfo/RestaurantProfile'
-// import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
 import Home from './components/logins/Home';
 import About from './components/logins/About';
 import { useState, useEffect } from "react"
-import { Outlet, Link, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import GuestProfile from './components/guestInfo/GuestProfile';
 import ReservationList from './components/reservationInfo/ReservationList';
 
+
 const App = () => {
-  // const classes = useStyles()
-
-
-
+  
   const [restaurants, setRestaurants] = useState([])
   const [guests, setGuests] = useState([])
 
@@ -59,9 +36,6 @@ const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-
-
-
   // if(loading) return (<h1>Loading...</h1>)
 
 
@@ -69,13 +43,12 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>}>
-          {/* <Route exact index element={<Home />} /> */}
           <Route path="*" element={
             <main style={{ padding: "1rem" }}>
               <p>There's nothing here!</p>
             </main>
           } />
-          <Route exact path="home" element={<Home />} />
+          
           <Route exact path="about" element={<About />} />
           <Route exact path="restaurants" element={<RestaurantList restaurants={restaurants}/>} />
           <Route exact path="profile" element={<GuestProfile loggedInGuest={loggedInGuest}/>}/>
