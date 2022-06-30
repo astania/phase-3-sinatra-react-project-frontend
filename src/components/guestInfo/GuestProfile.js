@@ -1,11 +1,20 @@
-import GuestNavBar from '../navigation/GuestNavBar'
+import ReservationCard from "../reservationInfo/ReservationCard"
 
 
-const GuestProfile = () => {
+const GuestProfile = ({loggedInGuest}) => {
+  let reservations = loggedInGuest.reservations
+
+  console.log("in guest profile", loggedInGuest)
+  console.log(reservations)
+ 
   return (
     <div>
-      <GuestNavBar/>
-      <div>GuestProfile</div>
+      <h3>{loggedInGuest.name}'s Profile</h3>
+      <h4>Reservations</h4>
+      {reservations.map(reservation => <ReservationCard reservation={reservation} key={reservation.id}/>)}
+      
+      {/*  */}
+
     </div>
     
   )

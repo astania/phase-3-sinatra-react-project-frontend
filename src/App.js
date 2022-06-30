@@ -23,9 +23,9 @@ import RestaurantList from './components/restaurantInfo/RestaurantsList'
 // import RestaurantLogInPage from './components/restaurantInfo/RestaurantLogInPage'
 import Home from './components/logins/Home';
 import About from './components/logins/About';
-// 
 import { useState, useEffect } from "react"
 import { Outlet, Link, Routes, Route, BrowserRouter } from 'react-router-dom';
+import GuestProfile from './components/guestInfo/GuestProfile';
 
 const App = () => {
   // const classes = useStyles()
@@ -81,6 +81,7 @@ const App = () => {
           <Route exact path="home" element={<Home />} />
           <Route exact path="about" element={<About />} />
           <Route exact path="restaurants" element={<RestaurantList restaurants={restaurants}/>} />
+          <Route exact path="profile" element={<GuestProfile loggedInGuest={loggedInGuest}/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
