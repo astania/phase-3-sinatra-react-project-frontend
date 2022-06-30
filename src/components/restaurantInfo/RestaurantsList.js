@@ -7,7 +7,7 @@ const RestaurantsList = ({restaurants}) => {
 
   return (
     <div>
-      <div>RestaurantsList</div>
+      <h2>Our Restaurants</h2>
       {restaurants.map(restaurant => <RestaurantCard restaurant={restaurant} key={restaurant.id}/>)}
     </div>
     
