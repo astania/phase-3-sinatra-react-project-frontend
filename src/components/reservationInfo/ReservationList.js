@@ -1,8 +1,17 @@
+import ReservationCard from './ReservationCard'
 
+const ReservationList = ({ loggedInGuest }) => {
+  let reservations = loggedInGuest.reservations
 
-const ReservationList = () => {
+  console.log("in guest profile", loggedInGuest)
+  console.log(reservations)
+
   return (
-    <div>ReservationList</div>
+    <div>
+      <h3>{loggedInGuest.name}'s Reservations</h3>
+      {reservations.map(reservation => <ReservationCard reservation={reservation} key={reservation.id} />)}
+    </div>
+
   )
 }
 

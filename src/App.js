@@ -26,6 +26,7 @@ import About from './components/logins/About';
 import { useState, useEffect } from "react"
 import { Outlet, Link, Routes, Route, BrowserRouter } from 'react-router-dom';
 import GuestProfile from './components/guestInfo/GuestProfile';
+import ReservationList from './components/reservationInfo/ReservationList';
 
 const App = () => {
   // const classes = useStyles()
@@ -58,15 +59,11 @@ const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // console.log("guests: ", guests)
-  // console.log("Restaurants: ", restaurants)
 
 
 
   // if(loading) return (<h1>Loading...</h1>)
 
-  // console.log("in app.js", restaurants)
-  // console.log("in app.js", guests)
 
   return (
     <BrowserRouter>
@@ -82,6 +79,7 @@ const App = () => {
           <Route exact path="about" element={<About />} />
           <Route exact path="restaurants" element={<RestaurantList restaurants={restaurants}/>} />
           <Route exact path="profile" element={<GuestProfile loggedInGuest={loggedInGuest}/>}/>
+          <Route exact path="reservations" element={<ReservationList loggedInGuest={loggedInGuest}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
