@@ -1,21 +1,26 @@
-// import {React, useEffect, useState} from 'react';
-import ReactDOM from 'react-dom';
+
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import React from 'react'
-// import Home from './components/logins/Home'
-// import About from './components/logins/About'
-// import RestaurantList from './components/restaurantInfo/RestaurantsList'
 import reportWebVitals from './reportWebVitals';
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+
 );
+
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
