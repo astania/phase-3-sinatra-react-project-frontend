@@ -1,10 +1,12 @@
-import RestaurantNavBar from '../navigation/RestaurantNavBar'
 
-const RestaurantCard = () => {
+
+const RestaurantCard = ({restaurant}) => {
   return (
     <div>
-      <RestaurantNavBar/>
-      <div>RestaurantCard</div>
+      <img src={restaurant.image_url} alt="restaurant image" width="200" height="200"/>
+      <h3>{restaurant.restaurant_name}</h3>
+      <p>{restaurant.cuisine_type}</p>
+
     </div>
     
   )

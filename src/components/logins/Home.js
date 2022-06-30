@@ -38,10 +38,10 @@ const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGue
     const handleSubmit = (event) => {
         event.preventDefault()
         const guest = guests.find(guest => guest.id === Number(currentGuestId))
-        console.log(guest)
+        console.log("guest = ", guest)
         setLoggedInGuest(guest)
-        console.log(loggedInGuest)
-        setIsLoggedIn(true)
+        console.log("loggedInGuest =", loggedInGuest)
+        setIsLoggedIn(() => true)
         console.log("LoggedIn = ", isLoggedIn)
     }
 

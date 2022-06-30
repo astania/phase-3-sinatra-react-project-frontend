@@ -1,11 +1,11 @@
-import RestaurantNavBar from '../navigation/RestaurantNavBar'
 
 
-const RestaurantProfile = () => {
+
+const RestaurantProfile = ({restaurant}) => {
   return (
     <div>
-      <RestaurantNavBar/>
       <div>RestaurantProfile</div>
+      
     </div>
     
   )

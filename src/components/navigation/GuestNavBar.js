@@ -26,25 +26,25 @@ const Navbar = () => {
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }  
-               exact to="/"
+               to="/"
             >Home</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                exact to="/restaurants"
+                to="/restaurants"
             >Restaurants</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                exact to="/reservations"
+                to="/reservations"
             >My Reservations</NavLink>
             <NavLink
             style={({ isActive }) =>
             isActive ? activeStyle : style
           }
-                exact to="/profile"
+                to="/profile"
             >Profile</NavLink>
         </div>
     )
