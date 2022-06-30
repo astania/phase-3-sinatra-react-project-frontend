@@ -17,7 +17,8 @@ const Home = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGue
         <div>
             <Header />
             {isLoggedIn ? <GuestNavBar /> : <DefaultNavbar />}
-            {!!isLoggedIn ? <LoggedInHome loggedInGuest={loggedInGuest}/> : <LogInScreen guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>}
+            <LogInScreen guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>
+            {/* {!!isLoggedIn ? <LoggedInHome loggedInGuest={loggedInGuest}/> : <LogInScreen guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest}/>} */}
         
             <Outlet />
             <Footer />

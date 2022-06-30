@@ -48,7 +48,6 @@ const App = () => {
               <p>There's nothing here!</p>
             </main>
           } />
-          
           <Route exact path="about" element={<About />} />
           <Route exact path="restaurants" element={<RestaurantList restaurants={restaurants}/>} />
           <Route exact path="profile" element={<GuestProfile loggedInGuest={loggedInGuest}/>}/>
