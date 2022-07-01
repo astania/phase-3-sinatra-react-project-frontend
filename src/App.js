@@ -20,28 +20,33 @@ const App = () => {
     fetch("http://localhost:9292/restaurants")
       .then(r => r.json())
       .then(fetchedRestaurants => setRestaurants(fetchedRestaurants))
-      .then(setRestaurantsLoading(false))
   }, [])
 
   useEffect(() => {
     fetch("http://localhost:9292/guests")
       .then(r => r.json())
       .then(fetchedGuests => setGuests(fetchedGuests))
-
-      .then(setGuestsLoading(false))
   }, [])
 
-  const [restaurantsLoading, setRestaurantsLoading] = useState(true)
-  const [guestsLoading, setGuestsLoading] = useState(true)
+  // useEffect(() => {
+  //   fetch("http://localhost:9292/reservations")
+  //     .then(r => r.json())
+  //     .then(fetchedReservations => setReservations(fetchedReservations))
+  // }, [])
 
   const [currentGuestId, setCurrentGuestId] = useState("")
   const [loggedInGuest, setLoggedInGuest] = useState({})
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-
-
-  // if(loading) return (<h1>Loading...</h1>)
+  const onDeleteReservation = (id) => {
+    const filteredReservations = loggedInGuest.reservations.filter(reservation => reservation.id !== id)
+    // debugger
+    console.log("in delete function", id)
+    // setReservations(filteredReservations)
+    setLoggedInGuest({...loggedInGuest, reservations: filteredReservations})
+  
+  }
 
 
   return (
@@ -59,7 +64,7 @@ const App = () => {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} />} />
         <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} />} />
+        <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} onDeleteReservation={onDeleteReservation}/>} />
       </Routes>
     </BrowserRouter>
   )

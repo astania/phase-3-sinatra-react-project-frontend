@@ -1,7 +1,7 @@
 import React from "react"
 
 const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGuestId, loggedInGuest, setLoggedInGuest }) => {
-    console.log("In log in screen", guests)
+    // console.log("In log in screen", guests)
     const guestOptions = guests.map(guest => {
         return { label: guest.name, value: guest.id }
     })

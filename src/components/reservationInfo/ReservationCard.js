@@ -1,6 +1,14 @@
 
 
-const ReservationCard = ({reservation}) => {
+const ReservationCard = ({reservation, onDeleteReservation}) => {
+  
+  const handleDelete = (reservation) => {
+    fetch(`http://localhost:9292/reservations/${reservation.id}`, {
+        method: "DELETE",
+    })
+      .then(() => onDeleteReservation(reservation.id))
+  }
+
   return (
     <div>
       <img src={reservation.restaurant.image_url} width="100" height="100"/>
@@ -8,7 +16,7 @@ const ReservationCard = ({reservation}) => {
       <p>date: {reservation.date}</p>
       <p>time: {reservation.time}</p>
       <p>Number of guests: {reservation.number_of_guests}</p>
-      <button>cancel reservation</button>
+      <button onClick={() => handleDelete(reservation)}>cancel reservation</button>
     </div>
   )
 }
