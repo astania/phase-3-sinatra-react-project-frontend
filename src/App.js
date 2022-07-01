@@ -30,16 +30,12 @@ const App = () => {
 
   const [currentGuestId, setCurrentGuestId] = useState("")
   const [loggedInGuest, setLoggedInGuest] = useState({})
-
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const onDeleteReservation = (id) => {
     const filteredReservations = loggedInGuest.reservations.filter(reservation => reservation.id !== id)
-    
     console.log("in delete function", id)
-   
     setLoggedInGuest({...loggedInGuest, reservations: filteredReservations})
-  
   }
 
   const addNewGuest = (newGuest) => {

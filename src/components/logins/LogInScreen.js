@@ -7,9 +7,9 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
     })
 
     const blankGuestTemplate = {
-        username: "",
-        password: "",
-        name: ""
+            username: "",
+            password: "",
+            name: ""
     }
 
     const [newGuest, setNewGuest] = useState(blankGuestTemplate)
@@ -39,7 +39,7 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
         const name = e.target.name
         const value = e.target.value
         console.log(name, value)
-        setNewGuest({ ...newGuest, [name]: value })
+    setNewGuest({ ...newGuest, [name]: value })
     }
 
     const handleSubmit = (event) => {
@@ -60,11 +60,14 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newGuest),
+            body: JSON.stringify({guest: newGuest}),
         })
             .then(r => r.json())
             .then(newSubmission => onAddNewGuest(newSubmission))
+        setIsLoggedIn(true)
+        setLoggedInGuest(newGuest)
         setNewGuest(blankGuestTemplate)
+
 
     }
 
