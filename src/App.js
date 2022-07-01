@@ -1,7 +1,7 @@
 
 import RestaurantList from './components/restaurantInfo/RestaurantsList'
-import Home from './components/logins/Home';
-import About from './components/logins/About';
+import GuestHome from './components/logins/GuestHome';
+import About from './components/logins/MainLogInScreen';
 import { useState, useEffect } from "react"
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import GuestProfile from './components/guestInfo/GuestProfile';
@@ -28,12 +28,6 @@ const App = () => {
       .then(fetchedGuests => setGuests(fetchedGuests))
   }, [])
 
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/reservations")
-  //     .then(r => r.json())
-  //     .then(fetchedReservations => setReservations(fetchedReservations))
-  // }, [])
-
   const [currentGuestId, setCurrentGuestId] = useState("")
   const [loggedInGuest, setLoggedInGuest] = useState({})
 
@@ -41,11 +35,15 @@ const App = () => {
 
   const onDeleteReservation = (id) => {
     const filteredReservations = loggedInGuest.reservations.filter(reservation => reservation.id !== id)
-    // debugger
+    
     console.log("in delete function", id)
-    // setReservations(filteredReservations)
+   
     setLoggedInGuest({...loggedInGuest, reservations: filteredReservations})
   
+  }
+
+  const addNewGuest = (newGuest) => {
+    setGuests([...guests, newGuest])
   }
 
 
@@ -55,7 +53,7 @@ const App = () => {
     <Header />
     {isLoggedIn ? <GuestNavBar /> : <DefaultNavbar />}
       <Routes>
-        <Route exact path="/" element={<Home guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} />} />
+        <Route exact path="/" element={<GuestHome guests={guests} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentGuestId={currentGuestId} setCurrentGuestId={setCurrentGuestId} loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} onAddNewGuest={addNewGuest} />} />
         <Route path="/*" element={
           <main style={{ padding: "1rem" }}>
             <p>There's nothing here!</p>
