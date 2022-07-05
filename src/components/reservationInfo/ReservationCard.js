@@ -16,7 +16,7 @@ const ReservationCard = ({ reservation, onDeleteReservation, loggedInGuest, onUp
     setToggleUpdateReservation(() => !toggleUpdateReservation)
   }
 
-  console.log("updated reservation:", updatedReservation)
+  // console.log("updated reservation:", updatedReservation)
 
   const handleInputChange = (e) => {
     // console.log(e.target.value)

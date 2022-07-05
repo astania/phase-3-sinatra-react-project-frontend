@@ -29,13 +29,13 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
 
 
     const handleDropdownChange = (event) => {
-        console.log(event.target.value)
+        // console.log(event.target.value)
         setCurrentGuestId(event.target.value)
 
     }
 
     const handleInputChange = (e) => {
-        console.log(e.target.value)
+        // console.log(e.target.value)
         const name = e.target.name
         const value = e.target.value
         console.log(name, value)
@@ -45,11 +45,11 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
     const handleSubmit = (event) => {
         event.preventDefault()
         const guest = guests.find(guest => guest.id === Number(currentGuestId))
-        console.log("guest = ", guest)
+        // console.log("guest = ", guest)
         setLoggedInGuest(guest)
-        console.log("loggedInGuest =", loggedInGuest)
+        // console.log("loggedInGuest =", loggedInGuest)
         setIsLoggedIn(() => true)
-        console.log("LoggedIn = ", isLoggedIn)
+        // console.log("LoggedIn = ", isLoggedIn)
     }
 
     const handleNewGuest = (e) => {
