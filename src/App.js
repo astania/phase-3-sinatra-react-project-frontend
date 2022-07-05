@@ -43,10 +43,20 @@ const App = () => {
   }
 
   const addNewReservation = (updatedGuest) => {
-    const filteredGuests = guests.map(guest => guest.id === updatedGuest.id ? updatedGuest : guest)
-    // console.log("guests with additional reservation", filteredGuests)
-    setGuests(filteredGuests)
-    // console.log("updated guest IN APP", updatedGuest)
+    // const filteredGuests = guests.map(guest => guest.id !== updatedGuest.id)
+    // setGuests([filteredGuests, updatedGuest])
+    // console.log("filtered guests",filteredGuests)
+
+    // const updatedGuests = guests.map((guest) => {
+    //   if (guest.id === updatedGuest.id) {
+    //     return updatedGuest;
+    //   } else {
+    //     return guest;
+    //   }
+    // });
+    // setGuests(updatedGuests);
+
+    console.log("updated guest", updatedGuest)
     
   }
 

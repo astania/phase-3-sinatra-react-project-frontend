@@ -21,13 +21,13 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
   const [newReservation, setNewReservation] = useState(blankReservationTemplate)
 
   const updatedGuestProfile = { ...loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }
-  // console.log("TESTING", updatedGuestProfile)
+  console.log("guest profile to be updated in RP", updatedGuestProfile)
   // console.log("loggedInGuest", loggedInGuest)
 
   const handleInputChange = (e) => {
     // console.log(e.target.value)
     const name = e.target.name
-    const value = e.target.value
+    const value = e.target.value 
     // console.log(name, value)
     setNewReservation({ ...newReservation, [name]: value })
   }
@@ -36,7 +36,7 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
 
   const handleNewReservation = (e) => {
     e.preventDefault()
-    console.log("reservation to be added", newReservation)
+    // console.log("reservation to be added", newReservation)
     fetch('http://localhost:9292/reservations', {
       method: "POST",
       headers: {
@@ -49,7 +49,7 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
     .then(newRes => console.log("added reservation", newRes))
 
     addNewReservation(updatedGuestProfile)
-    setNewReservation(blankReservationTemplate)
+    // setNewReservation(blankReservationTemplate)
   }
   
 
