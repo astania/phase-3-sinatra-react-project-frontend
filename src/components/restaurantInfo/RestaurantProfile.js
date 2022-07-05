@@ -5,10 +5,10 @@ import { useState } from "react"
 const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) => {
   let params = useParams()
 
-  console.log("logged in guest", loggedInGuest)
+  // console.log("logged in guest", loggedInGuest)
 
   const selectedRestaurant = restaurants.filter(restaurant => restaurant.id == params.id)[0]
-  console.log(selectedRestaurant.restaurant_name)
+  // console.log(selectedRestaurant.restaurant_name)
 
   let blankReservationTemplate = {
     date: "",
@@ -16,47 +16,40 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
     number_of_guests: "",
     restaurant_id: selectedRestaurant.id,
     guest_id: loggedInGuest.id,
-    restaurant: {
-      id: selectedRestaurant.id,
-      restaurant_name: selectedRestaurant.restaurant_name,
-      cuisine_type: selectedRestaurant.cuisine_type,
-      image_url: selectedRestaurant.image_url
-    }
   }
 
   const [newReservation, setNewReservation] = useState(blankReservationTemplate)
 
-  const newGuestProfile = { ...loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }
-  console.log("TESTING", newGuestProfile)
-  console.log("loggedInGuest", loggedInGuest)
+  const updatedGuestProfile = { ...loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }
+  // console.log("TESTING", updatedGuestProfile)
+  // console.log("loggedInGuest", loggedInGuest)
 
   const handleInputChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     const name = e.target.name
     const value = e.target.value
-    console.log(name, value)
+    // console.log(name, value)
     setNewReservation({ ...newReservation, [name]: value })
   }
 
-  console.log({ reservations: newReservation})
+  // console.log({ reservations: newReservation})
 
   const handleNewReservation = (e) => {
     e.preventDefault()
-    console.log("reservation to be added",newReservation)
-    console.log("all resevations, plus new", { reservations: [...loggedInGuest.reservations, newReservation] })
-    fetch(`http://localhost:9292/guests/${loggedInGuest.id}`, {
-      method: "PATCH",
+    console.log("reservation to be added", newReservation)
+    fetch('http://localhost:9292/reservations', {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
-        'Accept': 'application/json'
       },
-      body: JSON.stringify({ loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }),
+      body: JSON.stringify({reservation: newReservation}),
     })
       .then(r => r.json())
-    // .then(updatedGuest => addNewReservation(updatedGuest))
+    
+    .then(newRes => console.log("added reservation", newRes))
 
-    // setNewReservation(blankReservationTemplate)
-    .then(updatedGuest => console.log("updatedGuest",updatedGuest))
+    addNewReservation(updatedGuestProfile)
+    setNewReservation(blankReservationTemplate)
   }
   
 
