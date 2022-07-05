@@ -7,9 +7,9 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
     })
 
     const blankGuestTemplate = {
-            username: "",
-            password: "",
-            name: ""
+        username: "",
+        password: "",
+        name: ""
     }
 
     const [newGuest, setNewGuest] = useState(blankGuestTemplate)
@@ -39,7 +39,7 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
         const name = e.target.name
         const value = e.target.value
         console.log(name, value)
-    setNewGuest({ ...newGuest, [name]: value })
+        setNewGuest({ ...newGuest, [name]: value })
     }
 
     const handleSubmit = (event) => {
@@ -60,7 +60,7 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({guest: newGuest}),
+            body: JSON.stringify({ guest: newGuest }),
         })
             .then(r => r.json())
             .then(newSubmission => onAddNewGuest(newSubmission))
@@ -78,6 +78,7 @@ const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCur
                 <label>
                     Select your name
                     <select onChange={e => handleDropdownChange(e)}>
+                        <option value="none" selected disabled hidden>Select an Option</option>
                         {guestOptions.map(option => (
                             <option value={option.value} key={option.value}>{option.label}</option>))}
                     </select>
