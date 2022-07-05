@@ -53,8 +53,8 @@ const ReservationCard = ({ reservation, onDeleteReservation, loggedInGuest, onUp
       <p>date: {reservation.date}</p>
       <p>time: {reservation.time}</p>
       <p>Number of guests: {reservation.number_of_guests}</p>
-      <button onClick={() => handleDelete(reservation)}>cancel reservation</button>
-      <button onClick={() => handleUpdateReservationClick(reservation)}>update reservation</button>
+      <button onClick={() => handleDelete(reservation)}>Cancel Reservation</button>
+      <button onClick={() => handleUpdateReservationClick(reservation)}>Update Reservation</button>
       {toggleUpdateReservation ?
 
         <form onSubmit={(e) => updateReservation(e)}>
@@ -67,7 +67,7 @@ const ReservationCard = ({ reservation, onDeleteReservation, loggedInGuest, onUp
           <label> Number of Guests
             <input type="text" name="number_of_guests" value={updatedReservation.number_of_guests} onChange={handleInputChange} />
           </label>
-          <button type="submit">Update Your Reservation</button>
+          <button type="submit">Submit Reservation Update</button>
         </form> : null}
     </div>
   )

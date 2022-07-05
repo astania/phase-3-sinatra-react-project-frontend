@@ -1,6 +1,6 @@
 import { React, useState } from "react"
 
-const LogInScreen = ({ guests, isLoggedIn, setIsLoggedIn, currentGuestId, setCurrentGuestId, loggedInGuest, setLoggedInGuest, onAddNewGuest }) => {
+const LogInScreen = ({ guests, setIsLoggedIn, currentGuestId, setCurrentGuestId, setLoggedInGuest, onAddNewGuest }) => {
     // console.log("In log in screen", guests)
     const guestOptions = guests.map(guest => {
         return { label: guest.name, value: guest.id }

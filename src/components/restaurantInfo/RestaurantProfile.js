@@ -5,7 +5,7 @@ import { useState } from "react"
 const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) => {
   let params = useParams()
 
-  // console.log("logged in guest", loggedInGuest)
+  console.log("logged in guest", loggedInGuest)
 
   const selectedRestaurant = restaurants.filter(restaurant => restaurant.id == params.id)[0]
   // console.log(selectedRestaurant.restaurant_name)
@@ -21,7 +21,7 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
   const [newReservation, setNewReservation] = useState(blankReservationTemplate)
 
   const updatedGuestProfile = { ...loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }
-  console.log("guest profile to be updated in RP", updatedGuestProfile)
+  // console.log("guest profile to be updated in RP", updatedGuestProfile)
   // console.log("loggedInGuest", loggedInGuest)
 
   const handleInputChange = (e) => {
@@ -52,8 +52,6 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
     // setNewReservation(blankReservationTemplate)
   }
   
-
-  if (loggedInGuest.id > 0) {
     return (
       <div>
         <h2>Make a Reservation at:</h2>
@@ -75,14 +73,7 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
       </div>
 
     )
-  } else {
-    return (
-      <div>
-        <h3><em>Please log in to make a reservation</em></h3>
-      </div>
-    )
-
-  }
+  
 
 }
 
