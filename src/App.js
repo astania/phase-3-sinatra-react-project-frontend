@@ -60,6 +60,14 @@ const App = () => {
     
   }
 
+  const onUpdateReservation = (updatedReservation) => {
+    const removeOldReservation = loggedInGuest.reservations.map(reservation => reservation.id == updatedReservation.id ? updatedReservation : reservation)
+    setLoggedInGuest({...loggedInGuest, reservations: removeOldReservation})
+    const updatedGuests = guests.map(guest => guest.id == loggedInGuest.id ? loggedInGuest : guest)
+    setGuests(updatedGuests)
+    
+  }
+
 
   return (
     
@@ -76,7 +84,7 @@ const App = () => {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} />} />
         <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} onDeleteReservation={onDeleteReservation}/>} />
+        <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} onDeleteReservation={onDeleteReservation} onUpdateReservation={onUpdateReservation}/>} />
         <Route path="/restaurants/:id" element={<RestaurantProfile restaurants={restaurants} loggedInGuest={loggedInGuest} addNewReservation={addNewReservation}/>}/>
       </Routes>
     </BrowserRouter>

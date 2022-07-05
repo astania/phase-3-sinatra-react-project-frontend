@@ -1,13 +1,13 @@
 import ReservationCard from './ReservationCard'
 
-const ReservationList = ({ loggedInGuest, onDeleteReservation }) => {
+const ReservationList = ({ loggedInGuest, onDeleteReservation, onUpdateReservation }) => {
   let reservations = loggedInGuest.reservations
 
   if (reservations.length > 0) {
     return (
       <div>
         <h3>{loggedInGuest.name}'s Reservations</h3>
-        {reservations.map(reservation => <ReservationCard reservation={reservation} key={reservation.id} onDeleteReservation={onDeleteReservation}/>)}
+        {reservations.map(reservation => <ReservationCard loggedInGuest={loggedInGuest} reservation={reservation} key={reservation.id} onDeleteReservation={onDeleteReservation} onUpdateReservation={onUpdateReservation}/>)}
       </div>
     )
   } else {
