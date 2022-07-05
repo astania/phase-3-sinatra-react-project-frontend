@@ -11,7 +11,7 @@ const ReservationCard = ({reservation, onDeleteReservation}) => {
 
   return (
     <div>
-      <img src={reservation.restaurant.image_url} width="100" height="100"/>
+      <img src={reservation.restaurant.image_url} width="100" height="100" alt="restaurant"/>
       <h4>{reservation.restaurant.restaurant_name}</h4>
       <p>date: {reservation.date}</p>
       <p>time: {reservation.time}</p>

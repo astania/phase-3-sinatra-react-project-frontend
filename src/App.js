@@ -9,6 +9,7 @@ import ReservationList from './components/reservationInfo/ReservationList';
 import GuestNavBar from './components/navigation/GuestNavBar'
 import DefaultNavbar from './components/navigation/DefaultNavBar';
 import Header from './components/navigation/Header'
+import RestaurantProfile from './components/restaurantInfo/RestaurantProfile';
 
 
 const App = () => {
@@ -34,12 +35,17 @@ const App = () => {
 
   const onDeleteReservation = (id) => {
     const filteredReservations = loggedInGuest.reservations.filter(reservation => reservation.id !== id)
-    console.log("in delete function", id)
     setLoggedInGuest({...loggedInGuest, reservations: filteredReservations})
   }
 
   const addNewGuest = (newGuest) => {
     setGuests([...guests, newGuest])
+  }
+
+  const addNewReservation = (updatedGuest) => {
+    const filteredGuests = guests.map(guest => guest.id === updatedGuest.id ? updatedGuest : guest)
+    console.log("guests with additional reservation", filteredGuests)
+    setGuests(filteredGuests)
   }
 
 
@@ -59,6 +65,7 @@ const App = () => {
         <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} />} />
         <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} onDeleteReservation={onDeleteReservation}/>} />
+        <Route path="/restaurants/:id" element={<RestaurantProfile restaurants={restaurants} loggedInGuest={loggedInGuest} addNewReservation={addNewReservation}/>}/>
       </Routes>
     </BrowserRouter>
   )
