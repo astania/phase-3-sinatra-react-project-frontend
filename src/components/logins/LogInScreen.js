@@ -63,9 +63,10 @@ const LogInScreen = ({ guests, setIsLoggedIn, currentGuestId, setCurrentGuestId,
             body: JSON.stringify({ guest: newGuest }),
         })
             .then(r => r.json())
-            .then(newSubmission => onAddNewGuest(newSubmission))
+            .then(newSubmission => {onAddNewGuest(newSubmission) 
+                setLoggedInGuest(newSubmission)})
         setIsLoggedIn(true)
-        setLoggedInGuest(newGuest)
+        
         setNewGuest(blankGuestTemplate)
 
 

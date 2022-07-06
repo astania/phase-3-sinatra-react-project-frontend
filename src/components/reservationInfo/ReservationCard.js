@@ -1,9 +1,9 @@
 import { useState } from "react"
 
-const ReservationCard = ({ reservation, onDeleteReservation, loggedInGuest, onUpdateReservation }) => {
+const ReservationCard = ({ reservation, onDeleteReservation, onUpdateReservation }) => {
   const [toggleUpdateReservation, setToggleUpdateReservation] = useState(false)
   const [updatedReservation, setUpdatedReservation] = useState(reservation)
-  const [updatedGuest, setUpdatedGuest] = useState(loggedInGuest)
+  // const [updatedGuest, setUpdatedGuest] = useState(loggedInGuest)
 
   const handleDelete = (reservation) => {
     fetch(`http://localhost:9292/reservations/${reservation.id}`, {
@@ -38,7 +38,7 @@ const ReservationCard = ({ reservation, onDeleteReservation, loggedInGuest, onUp
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ reservation: updatedReservation }),
+      body: JSON.stringify({"reservation": {time: updatedReservation.time, date: updatedReservation.date, number_of_guests: updatedReservation.number_of_guests}}),
     })
       .then(r => r.json())
 
