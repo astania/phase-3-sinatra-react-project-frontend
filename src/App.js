@@ -41,13 +41,15 @@ const App = () => {
   }
 
   const addNewReservation = (updatedGuest) => {
-    // console.log("updated guest", updatedGuest)
-    const filteredGuests = guests.map(guest => guest.id == updatedGuest.id ? updatedGuest : guest)
-    setGuests(filteredGuests)
+    console.log("updated guest", updatedGuest)
+    const updatedGuests = guests.map(guest => guest.id == updatedGuest.id ? updatedGuest : guest)
     setLoggedInGuest(updatedGuest)
-    console.log("filtered guests", filteredGuests)
-    // console.log("updated guest", updatedGuest)
+    setGuests(updatedGuests)
+    console.log("updated guests", updatedGuests)
+    
+    
   }
+  console.log("logged in guest", loggedInGuest)
 
   const onUpdateReservation = (updatedReservation) => {
     const reservationsWithReplacedReservation = loggedInGuest.reservations.map(reservation => reservation.id == updatedReservation.id ? updatedReservation : reservation)

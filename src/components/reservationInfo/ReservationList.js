@@ -1,14 +1,14 @@
 import ReservationCard from './ReservationCard'
 
 const ReservationList = ({ loggedInGuest, onDeleteReservation, onUpdateReservation }) => {
-  let reservations = loggedInGuest.reservations
-  console.log("loggedInGuest", loggedInGuest)
+  // let reservations = loggedInGuest.reservations
+  console.log("loggedInGuest in reservation list", loggedInGuest)
 
-  if (reservations.length > 0) {
+  if (loggedInGuest.reservations.length > 0) {
     return (
       <div>
         <h3>{loggedInGuest.name}'s Reservations</h3>
-        {reservations.map(reservation => <ReservationCard loggedInGuest={loggedInGuest} reservation={reservation} key={reservation.id} onDeleteReservation={onDeleteReservation} onUpdateReservation={onUpdateReservation}/>)}
+        {loggedInGuest.reservations.map((reservation) => <ReservationCard loggedInGuest={loggedInGuest} reservation={reservation} key={reservation.id} onDeleteReservation={onDeleteReservation} onUpdateReservation={onUpdateReservation}/>)}
       </div>
     )
   } else {

@@ -20,7 +20,7 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
 
   const [newReservation, setNewReservation] = useState(blankReservationTemplate)
 
-  const updatedGuestProfile = { ...loggedInGuest, reservations: [...loggedInGuest.reservations, newReservation] }
+  const updatedGuestProfile = { ...loggedInGuest }
   // console.log("guest profile to be updated in RP", updatedGuestProfile)
   // console.log("loggedInGuest", loggedInGuest)
 
@@ -46,7 +46,9 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
     })
       .then(r => r.json())
     
-    .then(newRes => updatedGuestProfile.reservations = [...updatedGuestProfile.reservations, newRes])
+    .then(newRes => { newRes.restaurant = selectedRestaurant 
+      updatedGuestProfile.reservations = [...updatedGuestProfile.reservations, newRes]
+      })
 
     console.log("updated Guest Profile", updatedGuestProfile)
     addNewReservation(updatedGuestProfile)
