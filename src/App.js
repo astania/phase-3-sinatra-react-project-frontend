@@ -1,7 +1,6 @@
 
 import RestaurantList from './components/restaurantInfo/RestaurantsList'
 import GuestHome from './components/logins/GuestHome';
-import About from './components/logins/MainLogInScreen';
 import { useState, useEffect } from "react"
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import GuestProfile from './components/guestInfo/GuestProfile';
@@ -83,7 +82,6 @@ const App = () => {
             <p>There's nothing here!</p>
           </main>
         } />
-        <Route exact path="/about" element={<About />} />
         <Route exact path="/restaurants" element={<RestaurantList restaurants={restaurants} isLoggedIn={isLoggedIn} />} />
         <Route exact path="/profile" element={<GuestProfile loggedInGuest={loggedInGuest} setLoggedInGuest={setLoggedInGuest} setIsLoggedIn={setIsLoggedIn}/>} />
         <Route exact path="/reservations" element={<ReservationList loggedInGuest={loggedInGuest} onDeleteReservation={onDeleteReservation} onUpdateReservation={onUpdateReservation}/>} />
