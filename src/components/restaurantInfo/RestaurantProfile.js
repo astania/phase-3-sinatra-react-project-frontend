@@ -5,7 +5,7 @@ import { useState } from "react"
 const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) => {
   let params = useParams()
 
-  console.log("logged in guest", loggedInGuest)
+  // console.log("logged in guest", loggedInGuest)
 
   const selectedRestaurant = restaurants.filter(restaurant => restaurant.id == params.id)[0]
   // console.log(selectedRestaurant.restaurant_name)
@@ -46,10 +46,11 @@ const RestaurantProfile = ({ restaurants, loggedInGuest, addNewReservation }) =>
     })
       .then(r => r.json())
     
-    .then(newRes => console.log("added reservation", newRes))
+    .then(newRes => updatedGuestProfile.reservations = [...updatedGuestProfile.reservations, newRes])
 
+    console.log("updated Guest Profile", updatedGuestProfile)
     addNewReservation(updatedGuestProfile)
-    // setNewReservation(blankReservationTemplate)
+    setNewReservation(blankReservationTemplate)
   }
   
     return (

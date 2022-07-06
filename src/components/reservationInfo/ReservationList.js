@@ -2,6 +2,7 @@ import ReservationCard from './ReservationCard'
 
 const ReservationList = ({ loggedInGuest, onDeleteReservation, onUpdateReservation }) => {
   let reservations = loggedInGuest.reservations
+  console.log("loggedInGuest", loggedInGuest)
 
   if (reservations.length > 0) {
     return (

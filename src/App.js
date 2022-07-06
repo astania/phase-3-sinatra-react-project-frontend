@@ -1,4 +1,3 @@
-
 import RestaurantList from './components/restaurantInfo/RestaurantsList'
 import GuestHome from './components/logins/GuestHome';
 import { useState, useEffect } from "react"
@@ -42,23 +41,12 @@ const App = () => {
   }
 
   const addNewReservation = (updatedGuest) => {
-    console.log("updated guest", updatedGuest)
+    // console.log("updated guest", updatedGuest)
     const filteredGuests = guests.map(guest => guest.id == updatedGuest.id ? updatedGuest : guest)
     setGuests(filteredGuests)
     setLoggedInGuest(updatedGuest)
     console.log("filtered guests", filteredGuests)
-
-    // const updatedGuests = guests.map((guest) => {
-    //   if (guest.id === updatedGuest.id) {
-    //     return updatedGuest;
-    //   } else {
-    //     return guest;
-    //   }
-    // });
-    // setGuests(updatedGuests);
-
-    console.log("updated guest", updatedGuest)
-    
+    // console.log("updated guest", updatedGuest)
   }
 
   const onUpdateReservation = (updatedReservation) => {
@@ -66,12 +54,10 @@ const App = () => {
     setLoggedInGuest({...loggedInGuest, reservations: reservationsWithReplacedReservation})
     const updatedGuests = guests.map(guest => guest.id == loggedInGuest.id ? loggedInGuest : guest)
     setGuests(updatedGuests)
-    
   }
 
 
   return (
-    
     <BrowserRouter>
     <Header />
     {isLoggedIn ? <GuestNavBar /> : <DefaultNavbar />}

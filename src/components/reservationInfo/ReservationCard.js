@@ -46,6 +46,7 @@ const ReservationCard = ({ reservation, onDeleteReservation, onUpdateReservation
     onUpdateReservation(updatedReservation)
   }
 
+  if (reservation.restaurant) {
   return (
     <div>
       <img src={reservation.restaurant.image_url} width="100" height="100" alt="restaurant" />
@@ -71,6 +72,11 @@ const ReservationCard = ({ reservation, onDeleteReservation, onUpdateReservation
         </form> : null}
     </div>
   )
+      } else {
+        <div></div>
+      }
+
 }
+
 
 export default ReservationCard
