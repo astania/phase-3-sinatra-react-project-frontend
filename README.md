@@ -4,7 +4,7 @@
 
 This is the backend for a restaurant reservation app. The objective of this project is to showcase skills in Ruby and Active Record. You can create guests, log in, view available restaurants, create reservations, view your reservations, and edit the reservations. 
 
-![gif](https://s8.gifyu.com/images/giphy4deee30fc23ffabd.gif)
+![gif](https://github.com/phase-3-project-build-frontend/giphy.gif)
 
 ### Requirements 
 * node version 14.17.5
