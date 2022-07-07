@@ -4,7 +4,7 @@
 
 This is the backend for a restaurant reservation app. The objective of this project is to showcase skills in Ruby and Active Record. You can create guests, log in, view available restaurants, create reservations, view your reservations, and edit the reservations. 
 
-![gif](https://i.imgur.com/NaeImuH.mp4)
+![gif](https://i.imgur.com/NaeImuH.gif)
 
 ### Requirements 
 * node version 14.17.5
